@@ -34,12 +34,14 @@ pipeline {
             }            
         }
 
-        stage('Build Docker Container') {
+        stage('push Docker Container') {
       		steps {
-			    sh 'docker run --name prod -d -p 80:80 mustafamhasan/blueimage/latest'
-            }
+                   dockerImage = docker.build("mustafamhasan/blueimage:latest")
+                    docker.withRegistry('', 'dockerhub') {
+                        dockerImage.push()
+                    }            
+             }
         }
-
         
         stage('Deploying to EKS') {
             steps {
