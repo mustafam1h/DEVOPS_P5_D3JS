@@ -13,7 +13,9 @@ pipeline {
 		}
      stage('Build Docker Image B') {
             steps {
-                sh 'sudo apt-get install docker'
+                sh 'sudo apt install docker.io'
+                sh 'sudo systemctl start docker'
+                sh 'sudo systemctl enable docker'
                 sh 'chown "$USER":"$USER" /home/"$USER"/.docker -R'
                 sh 'systemctl restart docker'
                 sh 'cd blue && chmod +x run_docker.sh && ./run_docker.sh'
