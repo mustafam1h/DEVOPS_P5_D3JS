@@ -13,8 +13,8 @@ pipeline {
 		}
      stage('Build Docker Image') {
             steps {
-                sh 'sudo chmod +x ./blue/run_docker.sh'
-                sh 'sudo chmod +x ./green/run_docker.sh'
+                sh 'chmod +x ./blue/run_docker.sh'
+                sh 'chmod +x ./green/run_docker.sh'
                 sh ' ./blue/run_docker.sh'
                 sh ' ./green/run_docker.sh'
             }
