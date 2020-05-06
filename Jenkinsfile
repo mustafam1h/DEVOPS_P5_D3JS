@@ -16,6 +16,7 @@ pipeline {
                 sh 'sudo apt install docker.io'
                 sh 'sudo systemctl start docker'
                 sh 'sudo systemctl enable docker'
+                sh 'sudo usermod -aG docker ${USER}'
                 sh 'cd blue && chmod +x run_docker.sh && ./run_docker.sh'
 
             }
