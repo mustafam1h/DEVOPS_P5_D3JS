@@ -13,3 +13,11 @@ Runnig the application
    `aws eks --region us-east-1 update-kubeconfig --name prod`
      `kubectl config use-context arn:aws:eks:us-east-2:291671365597:cluster/prod`
 
+Jenkins Stages 
+
+![Jenkins]("1.JPG")
+
+
+
+
+D3.js App is used to graph the new cases in Riyadh and Cairo of COVID 19 using wikepedia 
