@@ -36,10 +36,11 @@ pipeline {
 
         stage('push Docker Container') {
       		steps {
-                   
-                    docker.withRegistry('', 'dockerhub') {
-                    sh 'cd blue && sudo chmod +x upload_docker.sh && ./upload_docker.sh'
-                    }            
+                   withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+    // the code in here can access $pass and $user
+}
+                    sh 'cd blue && sudo chmod +x upload_docker.sh && ./upload_docker.sh $pass'
+                             
              }
         }
         
