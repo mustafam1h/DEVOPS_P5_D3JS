@@ -1,0 +1,159 @@
+<html>
+<head>
+<script>
+
+</script>
+
+
+
+</head>
+
+
+
+
+</html>
+
+
+
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.15/c3.min.css">
+    <link rel="stylesheet" type="text/css" href="a.css">
+
+</head>
+<body>
+
+
+<header>
+<div class="overlay">
+<h1 >الحالات والوفيات فى مصر كوفيد 19 </h1>
+    <div id="PowerChart" class="chart__container"></div>
+
+</header>
+<br>
+  <main>
+    <div id="PowerChart" class="chart__container"></div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.15/c3.min.js"></script>
+
+<script>
+var chart = c3.generate({
+        bindto: '#PowerChart',
+       
+        data: {
+
+            x: 'DateTime',
+            xFormat: '%m-%d', //%Y-%m-%d
+            columns: [
+                ['DateTime','04-04','04-05','04-06','04-07','04-08','04-09', '04-10', '04-11', '04-12', '04-13', '04-14', '04-15',
+                    '04-16', '04-17','04-18','04-19','04-20','04-21','04-22','04-23','04-24','04-25',
+					 '04-26', '04-27','04-28','04-29','04-30','05-01','05-02','05-03','05-04','05-05'],
+                ['data1',  85,103,149 ,128,110,139,95,145,126,125,160,155,168,171,188,112,189,157,169,232,201,227,215,248,260,226,269,358,298,272,348,388],
+				['data2',  85,103,149 ,128,110,139,95,145,126,125,160,155,168,171,188,112,189,157,169,232,201,227,215,248,260,226,269,358,298,272,348,388],
+                ['death1',  5,7,7,9,9,15,17,11,13,5,14,5,13,9,19,15,11,14,12,11,7,13,10,20,22,21,12,14,9,14,7,16],
+				['death2',  5,7,7,9,9,15,17,11,13,5,14,5,13,9,19,15,11,14,12,11,7,13,10,20,22,21,12,14,9,14,7,16],
+            ],
+			types: {
+            data1: 'bar',
+            data2: `area-spline`,
+			death1: 'bar',
+			death2:`area-spline`,
+            },
+			labels: {
+            format: {
+                data1: d3.format(''),
+				death1:d3.format(''),
+            }
+           },
+	
+            names: {
+                data1: 'الحالات',
+				data2:'cases',
+                death1: 'الوفيات',
+				death2:'death',
+ 
+            },
+            colors: {
+                data1: '#FFFFFF',
+				data2:'#FFFFFF',
+				death1:'#FF0000',
+				death2:'#FF0000',
+            },
+            axes: { data1: 'y',
+			        data2:'y',
+					death1:'y2',
+					death2:'y2'
+					
+					},
+			
+        },
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
+				      rotate: 45
+
+                    ,format: '%d-%b',
+                }
+            },
+            y: {
+			
+                tick: {
+                    format: function (d) { return d ; }
+                }
+            },
+            y2: {
+                show: true,
+                tick: {
+                    format: function (d) { return d ; }
+                }
+            }
+        },
+        point: {
+            r: 0,
+            focus: {
+                expand: {
+                    r: 4
+                }
+            }
+        },
+        legend: {
+            position: 'inset',
+            inset: {
+                anchor: 'bottom-right',
+                x: -30,
+                y: -75,
+                step: 1
+            }
+        },
+        padding: {
+            bottom: 5,
+            left: 5,
+            right: 5,
+        },
+        grid: {
+            x: {
+                show: true
+            },
+            y: {
+                show: true
+            }
+		
+        },
+			size: {
+             width: 1500,
+			 height:550
+            },
+			padding: {
+				right: 20,
+				top :20,
+				bottom:60
+				}
+    });
+
+
+</script>
+
+
+
+</body>

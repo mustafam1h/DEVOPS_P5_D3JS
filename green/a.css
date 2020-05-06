@@ -1,0 +1,135 @@
+
+header {
+	background: url('https://gulfbusiness.com/wp-content/uploads/Riyadh-skyline-1.jpg');
+	text-align: center;
+	width: 2200;
+	height: 1000;
+	background-size: cover;
+	  opacity: 0.8;
+	background-attachment: fixed;
+	position: absolute;
+	overflow: hidden;
+	//border-radius: 0 0 85% 85% / 30%;
+}
+header#PowerChart 
+{
+	  opacity: 1;
+	  
+
+             }
+header .overlay{
+	width: 100%;
+	height: 3000;
+
+	padding: 10px;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #333;
+ // background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+	
+}
+
+h1 {
+	font-family: 'Dancing Script', cursive;
+	font-size: 80px;
+	margin-bottom: 30px;
+}
+
+h3, p {
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 30px;
+}
+
+button {
+	border: none;
+	outline: none;
+	padding: 10px 20px;
+	border-radius: 50px;
+	color: #333;
+	background: #fff;
+	margin-bottom: 50px;
+	box-shadow: 0 3px 20px 0 #0000003b;
+}
+button:hover{
+	cursor: pointer;
+}
+			
+			
+  
+
+.chart__container {
+  max-width: 1024px;
+    height: 3024px;
+
+  margin: 0 auto;
+}
+    .c3-tooltip-container {
+        box-shadow: 0px 0px 5px 0 hsla(0, 0%, 0%, .3);
+    }
+
+    .c3-axis {
+        fill: black;
+    }
+	.c3-axis-x {
+	font-size: 15px;
+
+        fill: white;
+    }
+	.c3-axis-y {
+			font-size: 15px;
+
+        fill: white;
+    }
+    .domain {
+        stroke: black;
+    }
+
+    .c3-chart-arc text {
+        font-size: Medium;
+    }
+     .c3-chart-texts{
+		 			font-size: 30px;
+
+		 
+	 }
+    .c3-legend-background {
+        stroke-width: 3;
+    }
+
+
+    .c3-tooltip {
+        border: none;
+
+        tbody {
+
+            th {
+                background-color: yellow;
+
+                &:first-of-type {
+                    border-top-left-radius: 3px;
+                }
+
+                &:last-of-type {
+                    border-top-right-radius: 3px;
+                }
+            }
+
+            td {
+                border-color: hsl(0, 0%, 84%);
+            }
+
+            > tr:last-of-type > td {
+
+                &:first-of-type {
+                    border-bottom-left-radius: 12px;
+                }
+
+                &:last-of-type {
+                    border-bottom-right-radius: 3px;
+                }
+            }
+			
+//https://w.wallhaven.cc/full/d5/wallhaven-d5p6j3.png
+		//https://w.wallhaven.cc/full/43/wallhaven-43p27v.jpg	
+	//https://w.wallhaven.cc/full/13/wallhaven-13ypx1.png
+//https://w.wallhaven.cc/full/g8/wallhaven-g8k3yd.jpg		
+//https://w.wallhaven.cc/full/p8/wallhaven-p8zvr9.jpg  
