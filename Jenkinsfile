@@ -11,5 +11,12 @@ pipeline {
           sh 'cd green && tidy -q -e *.html'
         }
 		}
+     stage('Build Docker Image') {
+            steps {
+                sh './blue/run_docker.sh'
+                sh './green/run_docker.sh'
+            }
+        }
+
     }
 }
