@@ -18,8 +18,7 @@ pipeline {
                 sh 'sudo systemctl enable docker'
                 sh 'sudo usermod -aG docker ${USER}'
                 sh 'sudo systemctl restart docker'
-
-                sh 'cd blue && chmod +x run_docker.sh && ./run_docker.sh'
+                sh 'cd blue && chmod +x run_docker.sh && sudo ./run_docker.sh'
 
             }
         }
