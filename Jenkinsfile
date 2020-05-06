@@ -3,9 +3,9 @@ pipeline {
     stages {
       stage('Lint HTML') {
         steps {
-          sh ‘cd blue && tidy -q -e *.html’
+          sh ‘cd blue’		  
+          sh ‘tidy -q -e *.html’
         }
-		}
       stage('Upload to AWS') {
               steps {
                   withAWS(region:'us-east-2',credentials:'aws-static') {
