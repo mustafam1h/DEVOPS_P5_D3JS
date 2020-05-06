@@ -13,13 +13,13 @@ pipeline {
 		}
      stage('Build Docker Image B') {
             steps {
-                sh 'cd blue && ./run_docker.sh'
+                sh 'cd blue && chmod +x run_docker.sh && ./run_docker.sh'
 
             }
         }
      stage('Build Docker Image G') {
             steps {
-                sh 'cd green && ./run_docker.sh'
+                sh 'cd green && chmod +x run_docker.sh &&  ./run_docker.sh'
 
             }
         }
