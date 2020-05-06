@@ -15,8 +15,7 @@ Runnig the application
 
 Jenkins Stages 
 
-![Jenkins]("1.JPG")
-
+![JENKINS](1.JPG)
 
 
 
