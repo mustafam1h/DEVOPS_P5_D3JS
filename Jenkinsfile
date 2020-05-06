@@ -11,14 +11,17 @@ pipeline {
           sh 'cd green && tidy -q -e *.html'
         }
 		}
-     stage('Build Docker Image') {
+     stage('Build Docker Image B') {
             steps {
-                sh 'chmod +x ./blue/run_docker.sh'
-                sh 'chmod +x ./green/run_docker.sh'
-                sh ' ./blue/run_docker.sh'
-                sh ' ./green/run_docker.sh'
+                sh 'cd blue && ./run_docker.sh'
+
             }
         }
+     stage('Build Docker Image G') {
+            steps {
+                sh 'cd green && ./run_docker.sh'
 
+            }
+        }
     }
 }
