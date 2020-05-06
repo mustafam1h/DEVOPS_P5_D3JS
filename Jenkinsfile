@@ -13,6 +13,8 @@ pipeline {
 		}
      stage('Build Docker Image B') {
             steps {
+                sh 'chown "$USER":"$USER" /home/"$USER"/.docker -R'
+                sh 'systemctl restart docker'
                 sh 'cd blue && chmod +x run_docker.sh && ./run_docker.sh'
 
             }
