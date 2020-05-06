@@ -24,9 +24,24 @@ pipeline {
         }
      stage('Build Docker Image G') {
             steps {
-                sh 'cd green && chmod +x run_docker.sh &&  ./run_docker.sh'
+                sh 'sudo apt install docker.io'
+                sh 'sudo systemctl start docker'
+                sh 'sudo systemctl enable docker'
+                sh 'sudo usermod -aG docker ${USER}'
+                sh 'sudo systemctl restart docker'
+                sh 'cd green && chmod +x run_docker.sh && sudo ./run_docker.sh'
+            }            
+        }
 
+          stage('Build & Push to dockerhub') {
+            steps {
+                script {
+                    docker.withRegistry('', 'dockerhub') {
+                        dockerImage.push()
+                    }
+                }
             }
         }
+        
     }
 }
