@@ -36,9 +36,9 @@ pipeline {
 
         stage('push Docker Container') {
       		steps {
-                   dockerImage = docker.build("mustafamhasan/blueimage:latest")
+                   
                     docker.withRegistry('', 'dockerhub') {
-                        dockerImage.push()
+                    sh 'cd blue && sudo chmod +x upload_docker.sh && ./upload_docker.sh'
                     }            
              }
         }
