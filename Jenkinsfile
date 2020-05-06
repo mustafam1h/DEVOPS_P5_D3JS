@@ -11,41 +11,32 @@ pipeline {
           sh 'cd green && tidy -q -e *.html'
         }
 		}
-     //stage('Build Docker Image B') {
-           // steps {
-                //sh 'sudo apt install docker.io'
-               // sh 'sudo systemctl start docker'
+     stage('Build Docker Image B') {
+       
+            steps {
+              //  sh 'sudo apt install docker.io'
+                //sh 'sudo systemctl start docker'
                // sh 'sudo systemctl enable docker'
                // sh 'sudo usermod -aG docker ${USER}'
-             //   sh 'sudo systemctl restart docker'
-           //     sh 'cd blue && chmod +x run_docker.sh && sudo ./run_docker.sh'
+               // sh 'sudo systemctl restart docker'
+                sh 'cd blue && chmod +x run_docker.sh && sudo ./run_docker.sh'
 
-         //   }
-       // }
-   //  stage('Build Docker Image G') {
-     //       steps {
+            }
+        }
+     stage('Build Docker Image G') {
+            steps {
        //         sh 'sudo apt install docker.io'
          //       sh 'sudo systemctl start docker'
            //     sh 'sudo systemctl enable docker'
              //   sh 'sudo usermod -aG docker ${USER}'
                // sh 'sudo systemctl restart docker'
-                //sh 'cd green && chmod +x run_docker.sh && sudo ./run_docker.sh'
-            //}            
-       // }
-
-          stage('Build & Push to dockerhub') {
-            steps {
-                script {
-                    dockerImage = docker.build("mustafamhasan/blueimage:latest")
-                    docker.withRegistry('', 'dockerhub') {
-                        dockerImage.push()
-                    }
-                }
-            }
+                sh 'cd green && chmod +x run_docker.sh && sudo ./run_docker.sh'
+            }            
         }
+
         stage('Build Docker Container') {
       		steps {
-			    sh 'docker run --name capstone -d -p 80:80 mustafamhasan/blueimage/latest'
+			    sh 'docker run --name prod -d -p 80:80 mustafamhasan/blueimage/latest'
             }
         }
 
