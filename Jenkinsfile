@@ -39,7 +39,7 @@ pipeline {
                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
     // the code in here can access $pass and $user
 }
-                    sh 'cd blue && sudo chmod +x upload_docker.sh && ./upload_docker.sh $pass'
+                   sh ' cd blue && sudo chmod +x upload_docker.sh && sudo ./upload_docker.sh $pass '
                              
              }
         }
