@@ -46,16 +46,16 @@ pipeline {
              }
         }
         
-        //stage('Deploying to EKS') {
-          //  steps {
-            //    dir('k8s') {
-              //      withAWS(credentials: 'aws-credentials', region: 'eu-west-1') {
-                //            sh "eksctl create cluster --name prod --region us-east-2 --fargate"
-                  //          sh 'kubectl apply -f ./blue-green-service.json'
-                    //    }
-                    //}
-            //}
-       // }
+      stage('Deploy to EKS') {                               
+                                                                                                            {
+        withAWS(credentials: 'mustafa', region: 'us-east-2') {
+          sh 'kubectl config use-context arn:aws:eks:us-east-2:291671365597:cluster/prod'
+          sh 'kubectl apply -f ./blue/blue-controller.json'
+          sh 'kubectl apply -f blue-green-service.json'
+        }
+
+      }
+    }
         
     }
 }
