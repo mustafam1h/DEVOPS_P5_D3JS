@@ -59,6 +59,7 @@ pipeline {
           steps {	  
         withAWS(credentials: 'mustafa', region: 'us-east-2') {
           sh 'eksctl create cluster'
+          sh 'sudo chmod 777 /var/lib/jenkins/.docker/config.json'
           sh 'kubectl config use-context 291671365597.dkr.ecr.us-east-2.amazonaws.com/bluegreen:latest'
           sh 'kubectl apply -f ./blue/blue-controller.json'
           sh 'kubectl apply -f blue-green-service.json'
