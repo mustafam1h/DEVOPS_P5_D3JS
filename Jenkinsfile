@@ -40,22 +40,20 @@ pipeline {
                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
     // the code in here can access $pass and $user
       sh ' cd blue && sudo chmod +x upload_docker.sh && sudo ./upload_docker.sh $pass '
-}
+           }
                  
                              
-             }
-        }
+         }
+     }
         
       stage('Deploy to EKS') {                               
-                                                                                                            {
         withAWS(credentials: 'mustafa', region: 'us-east-2') {
           sh 'kubectl config use-context arn:aws:eks:us-east-2:291671365597:cluster/prod'
           sh 'kubectl apply -f ./blue/blue-controller.json'
           sh 'kubectl apply -f blue-green-service.json'
-        }
+              }
 
       }
-    }
+   }
         
-    }
 }
