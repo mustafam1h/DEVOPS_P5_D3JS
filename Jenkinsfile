@@ -49,7 +49,7 @@ pipeline {
       stage('Deploy to EKS') {
           steps {	  
         withAWS(credentials: 'mustafa', region: 'us-east-2') {
-          sh 'eksctl update cluster --name prod2 --region us-east-2 --fargate'
+          sh 'eksctl create cluster --name prod2 --region us-east-2 --fargate'
           sh 'eksctl create cluster'
           sh 'kubectl config use-context arn:aws:eks:us-east-2:291671365597:cluster/prod2'
           sh 'kubectl apply -f ./blue/blue-controller.json'
