@@ -45,23 +45,12 @@ pipeline {
                              
          }
      }
-      stage('Push  to ECR') {
-          steps {	  
-        sh 'sudo chmod 777 /var/lib/jenkins/.docker/config.json'
-        sh 'sudo aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 291671365597.dkr.ecr.us-east-2.amazonaws.com'
-        sh 'cd blue && docker build -t bluegreen .'
-        sh 'sudo docker tag bluegreen:latest 291671365597.dkr.ecr.us-east-2.amazonaws.com/bluegreen:latest'
-        sh 'sudo docker push 291671365597.dkr.ecr.us-east-2.amazonaws.com/bluegreen:latest'
-        sh 'kubectl apply -f ./blue/blue-controller.json'
-        sh 'kubectl apply -f blue-green-service.json'
-          }
-      }  
+  
       stage('Push  to EKS') {
           steps {	  
         withAWS(credentials: 'mustafa', region: 'us-east-2') {
-          sh 'eksctl create cluster'
-          sh 'sudo chmod 777 /var/lib/jenkins/.docker/config.json'
-          sh 'kubectl config use-context 291671365597.dkr.ecr.us-east-2.amazonaws.com/bluegreen:latest'
+         sh' eksctl create cluster --name prod2 --region us-east-2 --fargate'
+          sh 'kubectl config use-context arn:aws:eks:us-east-2:291671365597:cluster/prod2'
           sh 'kubectl apply -f ./blue/blue-controller.json'
           sh 'kubectl apply -f blue-green-service.json'
               }
